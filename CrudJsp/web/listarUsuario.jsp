@@ -46,7 +46,9 @@
                         + lista.get(num).getNome() + "&cpf=" + lista.get(num).getCpf() + "&email=" 
                         + lista.get(num).getEmail() + "&senha=" + lista.get(num).getSenha() + "'>Excluir</a>");
                         
-                        out.println("<td> <a href=''>Alterar</a>");
+                        out.println("<td> <a href='formAlterarUsuarioVIEW.jsp?id=" + lista.get(num).getId() + "&nome=" 
+                        + lista.get(num).getNome() + "&cpf=" + lista.get(num).getCpf() + "&email=" 
+                        + lista.get(num).getEmail() + "&senha=" + lista.get(num).getSenha() + "'>Alterar</a>");
                         
                    out.println("</tr>"); 
                 

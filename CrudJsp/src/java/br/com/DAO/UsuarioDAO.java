@@ -32,7 +32,7 @@ public class UsuarioDAO {
             prst.execute();
             prst.close();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Deu erro na classe UsuarioDAO método inserirUsuario!!!" + e);
         }
     
@@ -79,10 +79,32 @@ public class UsuarioDAO {
             prst.execute();
             prst.close();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Deu erro na classe UsuarioDAO metodo excluirUsuario!! " + e);
         }
     
+    
+    }
+    
+    public void alterarUsuario(Usuario usuario){
+        con = new Conexao().getConexao();
+        String sql = "UPDATE usuario SET nome=?, cpf=?, email=?, senha=? WHERE id=?";
+        
+        try {
+            prst = con.prepareStatement(sql);
+            
+            prst.setString(1, usuario.getNome());
+            prst.setString(2, usuario.getCpf());
+            prst.setString(3, usuario.getEmail());
+            prst.setString(4, usuario.getSenha());
+            prst.setInt(5, usuario.getId());
+            
+            prst.execute();
+            prst.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Deu erro na classe UsuarioDAO metodo alterarUsuario !!! " + e);
+        }
     
     }
     
