@@ -41,7 +41,11 @@
                         out.println("<td> " + lista.get(num).getCpf()+ "<br>");  
                         out.println("<td> " + lista.get(num).getEmail()+ "<br>");  
                         out.println("<td> " + lista.get(num).getSenha()+ "<br>");
-                        out.println("<td> <a href=''>Excluir</a>");
+                        
+                        out.println("<td> <a href='formExcluirUsuarioVIEW.jsp?id=" + lista.get(num).getId() + "&nome=" 
+                        + lista.get(num).getNome() + "&cpf=" + lista.get(num).getCpf() + "&email=" 
+                        + lista.get(num).getEmail() + "&senha=" + lista.get(num).getSenha() + "'>Excluir</a>");
+                        
                         out.println("<td> <a href=''>Alterar</a>");
                         
                    out.println("</tr>"); 

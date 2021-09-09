@@ -67,5 +67,23 @@ public class UsuarioDAO {
         return lista;
     }
     
+    public void excluirUsuario(Usuario usuario){
+        con = new Conexao().getConexao();
+        String sql = "DELETE FROM usuario WHERE id=?";
+        
+        try {
+            prst = con.prepareStatement(sql);
+            
+            prst.setInt(1, usuario.getId());
+            
+            prst.execute();
+            prst.close();
+            
+        } catch (Exception e) {
+            System.out.println("Deu erro na classe UsuarioDAO metodo excluirUsuario!! " + e);
+        }
+    
+    
+    }
     
 }
