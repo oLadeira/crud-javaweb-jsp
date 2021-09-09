@@ -4,12 +4,17 @@ package br.com.DAO;
 import br.com.Model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class UsuarioDAO {
     
     Connection con;
     PreparedStatement prst;
+    ArrayList<Usuario> lista = new ArrayList<>();
+    ResultSet rs;
     
     
     public void inserirUsuario(Usuario usuario){
@@ -32,5 +37,35 @@ public class UsuarioDAO {
         }
     
     }
+    
+    public ArrayList<Usuario> listarUsuario(){
+        con = new Conexao().getConexao();
+        String sql = "SELECT * FROM usuario";
+    
+        try {
+            
+            prst = con.prepareStatement(sql);                  
+            
+            rs = prst.executeQuery(sql);
+            
+            while(rs.next()){
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getInt("id"));
+            usuario.setNome(rs.getString("nome"));
+            usuario.setCpf(rs.getString("cpf"));
+            usuario.setEmail(rs.getString("email"));
+            usuario.setSenha(rs.getString("senha"));
+            
+            lista.add(usuario);
+            
+            }
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Deu erro na classe UsuarioDAO no metodo listarUsuario !!! " + e);
+        }
+        return lista;
+    }
+    
     
 }
